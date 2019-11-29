@@ -38,7 +38,8 @@ RUN apt-get update \
         unzip \
         build-essential \
         libaio1 \
-        re2c
+        re2c \
+        acl
 
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-configure gd \
@@ -104,3 +105,5 @@ RUN pecl channel-update pear.php.net \
 # Clean up
 RUN apt-get clean \
     && rm -r /var/lib/apt/lists/*
+
+WORKDIR /var/www
